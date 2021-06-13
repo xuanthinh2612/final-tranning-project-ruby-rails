@@ -1,0 +1,60 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary" >
+        <div class="panel-heading" id="accordion">
+          <span class="glyphicon glyphicon-comment"></span> Chat Room
+          <div class="btn-group pull-right">
+          </div>
+        </div>
+        <div class="panel-body" style="height: 650px" id="message-container1">
+          <ul class="chat" id="message-container">
+            <%= render 'messages/message', messages: @messages %>
+            <!--                <li class="right clearfix"><span class="chat-img pull-right">-->
+            <!--                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle"/>-->
+            <!--                        </span>-->
+            <!--                  <div class="chat-body clearfix">-->
+            <!--                    <div class="header">-->
+            <!--                      <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>-->
+            <!--                      <strong class="pull-right primary-font">Bhaumik Patel</strong>-->
+            <!--                    </div>-->
+            <!--                    <p>-->
+            <!--                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare-->
+            <!--                      dolor, quis ullamcorper ligula sodales.-->
+            <!--                    </p>-->
+            <!--                  </div>-->
+            <!--                </li>-->
+
+          </ul>
+        </div>
+        <div class="panel-footer">
+          <%= form_for(@message, html: { role: "form", multipart: true }, url: messages_path, remote: true) do |f| %>
+
+            <div class="input-group">
+              <!--            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..."/>-->
+              <!--            <span class="input-group-btn">-->
+              <!--                                        <button class="btn btn-warning btn-sm" id="btn-chat">-->
+              <!--                                            Send</button>-->
+              <!--                                    </span>-->
+
+              <%= f.text_field :body, class: "form-control input-sm",id: "input-message", placeholder: "Type message..." %>
+              <span class="input-group-btn">
+                <%= f.button 'Send', id: "send-m", class: "btn btn-warning btn-sm" %>
+              </span>
+
+            </div>
+            <%= f.file_field :attachment, class: "btn btn-warning btn-sm" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

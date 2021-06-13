@@ -1,0 +1,15 @@
+<h1 align="center"><%= @category.name %></h1>
+
+
+<h4 align="center"><%= @category.name %>'s articles</h4>
+
+
+<!--truyen du lieu vao cho 1 component-->
+<div align="center">
+  <%= will_paginate @articles_by_category %>
+</div>
+<%= render 'articles/article', obj: @articles_by_category %>
+
+<div align="center">
+  <%= will_paginate @articles_by_category %>
+</div>

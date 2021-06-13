@@ -1,0 +1,26 @@
+<h1>Categories</h1>
+<div align="center">
+  <%= will_paginate @categories %>
+</div>
+<% @categories.each do |c| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+
+        <div class="article-title">
+          <%= link_to c.name, category_path(c) %>
+
+        </div>
+        <div class="article-body">
+          <small>Created at: <%= time_ago_in_words(c.created_at) %>ago
+            last updated:<%= time_ago_in_words(c.updated_at) %> </small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
+<div align="center">
+  <%= will_paginate @categories %>
+</div>

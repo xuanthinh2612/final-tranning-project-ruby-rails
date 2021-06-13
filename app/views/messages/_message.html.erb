@@ -1,0 +1,29 @@
+<% messages.each do |m| %>
+
+  <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=user" alt="User Avatar" class="img-circle"/>
+                        </span>
+    <div class="chat-body clearfix">
+      <div class="header">
+        <strong class="primary-font"><%= m.user.username %></strong>
+        <%= link_to "Delete", message_path(m), method: :delete if current_user == m.user %>
+        <small class="pull-right text-muted">
+          <span class="glyphicon glyphicon-time"></span><%= m.created_at %></small>
+      </div>
+      <p>
+        <%= m.body %>
+      </p>
+      <p>
+        <%= link_to "Sent a file", m.attachment_url if m.attachment_url %>
+      </p>
+      <p>
+        <% if m.attachment_url %>
+          <% extend = m.attachment_url.to_s[-3..-1] %>
+          <% if (extend == "png" || extend == "jpg") %>
+            <%= image_tag(m.attachment_url, width: 200) %>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+  </li>
+<% end %>
