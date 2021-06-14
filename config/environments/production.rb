@@ -76,7 +76,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Log disallowed deprecations.
-  config.active_support.disallowed_deprecation = :log
+  config.active_support.disallowed_deprecheroku consoleation = :log
 
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
